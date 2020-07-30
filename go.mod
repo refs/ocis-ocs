@@ -26,6 +26,7 @@ require (
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/square/go-jose.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
+	github.com/pkg/errors v0.9.1
 )
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.26.0

@@ -45,7 +45,11 @@ func NewService(opts ...Option) Service {
 		r.Use(ocsm.OCSFormatCtx) // updates request Accept header according to format=(json|xml) query parameter
 		r.Route("/v{version:(1|2)}.php", func(r chi.Router) {
 			r.Use(response.VersionCtx) // stores version in context
-			r.Route("/apps/files_sharing/api/v1", func(r chi.Router) {})
+			r.Route("/apps/files_sharing/api/v1", func(r chi.Router) {
+				r.Route("/shares", func(r chi.Router) {
+					r.Get("/", svc.ListShares)
+				})
+			})
 			r.Route("/apps/notifications/api/v1", func(r chi.Router) {})
 			r.Route("/cloud", func(r chi.Router) {
 				r.Route("/capabilities", func(r chi.Router) {})
